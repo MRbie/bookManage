@@ -14,8 +14,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>图书处理页面</title>
+
+<link href="js/bootstrap.min.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+
 <style type="text/css">
-h1{text-align:center; }
+/* h1{text-align:center; } */
 </style>
 
 <script type="text/javascript">
@@ -26,7 +31,6 @@ h1{text-align:center; }
 </script>
 </head>
 <body>
-<marquee></marquee>
 
 <%
 	Book book=new Book();
@@ -63,18 +67,25 @@ h1{text-align:center; }
 	List<Book> list=dao.bookPage(p, r,book);
 	request.setAttribute("list",list);
 %>
-<h1>图书列表</h1>
+<h1 style="text-align:center;">图书列表</h1>
+<!-- <h1 style="text-align:right;margin-top: -50px;">图书排名榜</h1> -->
 
 <form action="book.jsp" method="post">
-
-<!-- <a href="javascript: window.history.go(-1)">返回上一级</a> -->
-<table align="center" cellpadding="10" cellspacing="10">
-	<tr>	
+	
+	<div class="row alert alert-info" style="text-align:center;margin: 0px; padding: 5px;">
+		<div class="form-group">
+			图书查询:<input type="text" name="bookname" id="bookname" value="${bookname}" placeholder="请输入查询条件"/>
+			<input type="submit" class="btn btn-danger" value="查询"> 
+		</div>
+	</div>	  
+		  
+<table align="center" cellpadding="10" cellspacing="10" class="table table-hover table-striped table-bordered">
+	<%-- <tr>	
 		<th>
 			图书查询:<input type="text" name="bookname" id="bookname" value="${bookname}"/>
 		</th>
 		<th><input type="submit" value="查询"></th>
-	</tr>
+	</tr> --%>
 	<tr bgcolor="green">
 		<td>编号</td>
 		<td>书名</td>
@@ -82,6 +93,7 @@ h1{text-align:center; }
 		<td>作者</td>
 		<td>封皮</td>
 		<td>出版社</td>
+		<td>图书排名榜</td>
 		<!-- <td>操作</td> -->
 	</tr>
 	<c:set var="bg" value=""></c:set>
@@ -94,14 +106,15 @@ h1{text-align:center; }
 			<td>${b.author }</td>
 			<td>${b.pic }</td>
 			<td>${b.publish }</td>
+			<td>第${b.bookid}名</td>
 			<%-- <td>
 				<a href="doupdatebook.jsp?bookid=${b.bookid}">修改</a>
 				<a href="">删除</a>
-				
 			</td> --%>
 	</tr>
 	</c:forEach>
 </table>
+
 <div align="center">
 	第<%=p %>/共<%=count %>页
 	<a href="book.jsp?p=0">首页</a>
@@ -111,6 +124,7 @@ h1{text-align:center; }
 	<input type="text" size="2" id="t2">
 	<input type="button" value="go" onclick="clickIt()"/>
 </div>
+
 
 </form>
 </body>

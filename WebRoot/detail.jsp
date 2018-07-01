@@ -27,7 +27,7 @@ a:hover{text-decoration:underline;font-size:28px;}
 </head>
 <body>
 <h1>图书详细信息的页面</h1>
-<a href="javascript: window.history.go(-1)">返回上一级</a>
+<!-- <a href="javascript: window.history.go(-1)">返回上一级</a> -->
 <%
 	Book book=(Book)session.getAttribute("book");
 %>
