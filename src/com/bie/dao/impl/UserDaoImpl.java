@@ -121,10 +121,8 @@ public class UserDaoImpl implements UserDao{
 			}
 			return list;
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally{
 			//关闭资源，避免出现异常
@@ -132,6 +130,80 @@ public class UserDaoImpl implements UserDao{
 		}
 		
 		return null;
+	}
+
+	@Override
+	public List<User> userPage(int page, int record) {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			con=BaseDao.getCon();//第一步连接数据库
+			//第二步书写sql语句
+			String sql="select * from user limit ?,? ";
+			ps=con.prepareStatement(sql);//第三步：预编译
+			//第几页需要设置好是页数减一乘以每页的记录数即是第多少页
+			ps.setInt(1, (page-1)*record);
+			ps.setInt(2, record);
+			
+			//第四步执行sql
+			rs=ps.executeQuery();
+			List<User> list=new ArrayList<User>();
+			while(rs.next()){
+				User user=new User();
+				user.setId(rs.getInt("id"));
+				user.setName(rs.getString("name"));
+				user.setPassword(rs.getString("password"));
+				user.setEmail(rs.getString("email"));
+				user.setPhone(rs.getString("phone"));
+				user.setIsAdmin(rs.getString("isAdmin"));
+				
+				list.add(user);
+			}
+			return list;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//关闭资源，避免出现异常
+			BaseDao.close(con, ps, rs);
+		}
+		return null;
+	}
+
+	@Override
+	public int getCount(int record) {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		//设置初始值为-1
+		int n=-1;
+		try {
+			con=BaseDao.getCon();//第一步连接数据库
+			//第二步书写sql语句
+			String sql="select count(*) from user ";
+			ps=con.prepareStatement(sql);//第三步：预编译
+			
+			//第四步执行sql
+			rs=ps.executeQuery();
+			if(rs.next()){
+				//获取第一条记录，因为查询count(1)就一条记录，获取即可,即总记录数
+				n=rs.getInt(1);
+				//将总记录数除以每页的总记录数然乎向上取整即可
+				n=(int)Math.ceil(1.0*n/record);
+			}
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//关闭资源，避免出现异常
+			BaseDao.close(con, ps, rs);
+		}
+		
+		return n;
 	}
 
 	

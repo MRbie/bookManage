@@ -8,7 +8,7 @@ import java.io.Serializable;
 * 用户的实体类
 */
 public class User implements Serializable{
-
+	
 	//增加序列号
 	private static final long serialVersionUID = 1L;
 	private Integer id;

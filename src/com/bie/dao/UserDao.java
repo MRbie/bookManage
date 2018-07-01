@@ -2,6 +2,7 @@ package com.bie.dao;
 
 import java.util.List;
 
+import com.bie.po.Book;
 import com.bie.po.User;
 
 /** 
@@ -32,4 +33,8 @@ public interface UserDao {
 	 * @return
 	 */
 	public List<User> selectUser(String sql,Object[] arr);
+	
+	public List<User> userPage(int page,int record);
+	
+	public int getCount(int record);
 }

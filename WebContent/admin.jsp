@@ -14,7 +14,7 @@
 h1{text-align:center;}
 a{font-size:36px;text-decoration:none;color:black;}
 a:hover{text-decoration:underline;color:#FF3300;}
-h1{color:#00FF99;}
+/* h1{color:#00FF99;} */
 table{margin-top:-95px; }
 </style>
 
@@ -26,7 +26,9 @@ table{margin-top:-95px; }
 </script>
 </head>
 <body>
-<marquee><h1>管理员页面</h1></marquee>
+<!-- <marquee><h1>管理员页面</h1></marquee> -->
+<h1>管理员页面</h1>
+<a href="user.jsp">用户管理</a><br/>
 <a href="insertbook.jsp">添加书籍</a><br/>
 <a href="logout.jsp">安全退出</a>
 
