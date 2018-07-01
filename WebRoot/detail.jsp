@@ -45,7 +45,10 @@ a:hover{text-decoration:underline;font-size:28px;}
 		<td><%=book.getBookname() %></td>
 		<td><%=book.getPrice() %></td>
 		<td><%=book.getAuthor() %></td>
-		<td><img src="images/<%=book.getPic() %>"></td>
+		<td>
+			<%-- <img src="images/<%=book.getPic() %>"> --%>
+			<img src="upload/<%=book.getPic() %>" width="150" height="150" />
+		</td>
 		<td><%=book.getPublish() %></td>
 	</tr>
 	<tr>

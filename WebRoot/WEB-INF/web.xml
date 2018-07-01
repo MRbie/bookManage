@@ -33,5 +33,15 @@
   	<url-pattern>/UserLoginServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>BookInsertServlet</servlet-name>
+  	<servlet-class>com.bie.servlet.BookInsertServlet</servlet-class>
+  	<multipart-config></multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>BookInsertServlet</servlet-name>
+  	<url-pattern>/BookInsertServlet</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

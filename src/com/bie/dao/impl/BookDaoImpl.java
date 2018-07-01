@@ -176,6 +176,7 @@ public class BookDaoImpl implements BookDao{
 	@Override
 	public boolean insertBook(Book book) {
 		String sql="insert into book values(0,?,?,?,?,?)";
+		//String sql="insert into book values(0,?,?,?,?)";
 		List<Object> list=new ArrayList<Object>();
 		list.add(book.getBookname());
 		list.add(book.getPrice());

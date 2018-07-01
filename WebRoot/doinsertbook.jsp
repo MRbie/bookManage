@@ -15,7 +15,7 @@
 	String bookname=request.getParameter("bookname");	
 	String price=request.getParameter("price");	
 	String author=request.getParameter("author");	
-	String pic=request.getParameter("pic");	
+	//String pic=request.getParameter("pic");	
 	String publish=request.getParameter("publish");	
 
 	Book book=new Book();
@@ -24,7 +24,7 @@
 	book.setAuthor(author);
 	Double price2=Double.parseDouble(price);
 	book.setPrice(price2);
-	book.setPic(pic);
+	//book.setPic(pic);
 	book.setPublish(publish);
 	
 	

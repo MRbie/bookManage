@@ -10,6 +10,9 @@ body{background:url(images/2.png)}
 h1{text-align:center;}
 </style>
 <script type="text/javascript" src="js/jquery.min.js"></script>
+<!-- 异步上传图片 -->
+<script type="text/javascript" src="js/jquery.form.js"></script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		//alert("测试jQuery是否能用");
@@ -30,11 +33,11 @@ h1{text-align:center;}
 				$("#authorError").html("图书作者不能为空");
 				return false;
 			}
-			var pic=$("#pic").val();//获取提交的密码的值
-			if(pic.length==0){
-				$("#picError").html("图书图片不能为空");
-				return false;
-			}
+			//var pic=$("#pic").val();//获取提交的密码的值
+			//if(pic.length==0){
+			//	$("#picError").html("图书图片不能为空");
+			//	return false;
+			//}
 			var publish=$("#publish").val();//获取提交的密码的值
 			if(publish.length==0){
 				$("#publishError").html("图书出版社不能为空");
@@ -45,10 +48,31 @@ h1{text-align:center;}
 	});
 </script>
 
+<script type="text/javascript">
+	//异步上传图片
+	function uploadimg(){
+		var options={
+				url:"system/upload",//后台服务地址
+				dataType:"text",//返回数据格式
+				type:"post",//提交的方式
+				success:function(fname){//响应	
+					//alert(fname);
+					var url="upload/"+fname;//图片存到这个路径里面
+					$("#pimg").attr("src",url);
+					//隐藏文本框才是存储到服务器的值
+					$("#pic").val(fname);
+				}
+		};
+		//把表单里面的数据自动提交，异步上传文件需要的插件jquery.form.js
+		$("#form1").ajaxSubmit(options);
+	}
+
+</script>
+
 </head>
 <body>
 <h1>~~~图书添加~~~</h1>
-<form action="doinsertbook.jsp" method="post" id="form1">
+<form action="BookInsertServlet" method="post" id="form1" id="f1" enctype="multipart/form-data">
 	<table align="center" cellpadding="10" cellspacing="10" width="100%">
 		<tr align="center">
 			<td>
@@ -70,7 +94,10 @@ h1{text-align:center;}
 		</tr>
 		<tr align="center">
 			<td>
-				封皮<input type="text" name="pic" id="pic"/>
+				封皮<!-- <input type="text" name="pic" id="pic"/> -->
+				<input type="file" name="productimg" onchange="uploadimg()" class="btn btn-default"/>
+				<input type="hidden" name="pic" id="pic" value=""/>
+				<img width="200" height="150" id="pimg"/>
 				<div id="picError" style="display:inline;color:red;"></div>
 			</td>
 		</tr>
