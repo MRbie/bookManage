@@ -24,6 +24,7 @@ a{font-size: 36px;}
 	<tr>
 		<td>欢迎您 : <%=user.getName() %></td>
 		<td align="right">
+			<a href="javascript: window.history.go(-1)">返回上一级</a>
 			<a href="cart.jsp">我的购物车</a>
 			<a href="logout.jsp">安全退出</a>
 		</td>

@@ -57,11 +57,16 @@ table{margin-top:-95px; }
 	}
 	
 	//7:调用分页的方法进行分页操作
-	List<Book> list=dao.bookPage(p, r);
+	List<Book> list=dao.bookPage(p, r,book);
 	request.setAttribute("list",list);
 	
 	request.setAttribute("book", book);
 %>
+
+<form action="" method="get">
+	
+	
+
 <table align="center" cellpadding="10" cellspacing="10">
 	
 	<tr bgcolor="green">
@@ -103,5 +108,7 @@ table{margin-top:-95px; }
 	<input type="text" size="2" id="t2">
 	<input type="button" value="go" onclick="clickIt()"/>
 </div>
+
+</form>
 </body>
 </html>

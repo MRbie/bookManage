@@ -227,5 +227,61 @@ public class BookDaoImpl implements BookDao{
 		}
 	}
 
+	@Override
+	public List<Book> bookPage(int page, int record, Book books) {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs=null;
+		try {
+			con=BaseDao.getCon();//第一步连接数据库
+			//第二步书写sql语句
+			//String sql="select * from book limit ?,? ";
+			if(books != null &&
+					books.getBookname() != null && 
+					!"".equals(books) && !"null".equals(books)){
+				String sql="select * from book where bookname like '%"+ books.getBookname() +"%' limit ?,? ";
+				ps=con.prepareStatement(sql);//第三步：预编译
+				//第几页需要设置好是页数减一乘以每页的记录数即是第多少页
+				//ps.setString(1, books.getBookname());
+				ps.setInt(1, (page-1)*record);
+				ps.setInt(2, record);
+			}else{
+				String sql="select * from book limit ?,? ";
+				ps=con.prepareStatement(sql);//第三步：预编译
+				//第几页需要设置好是页数减一乘以每页的记录数即是第多少页
+				//ps.setString(1, books.getBookname());
+				ps.setInt(1, (page-1)*record);
+				ps.setInt(2, record);
+			}
+			
+			
+			
+			//第四步执行sql
+			rs=ps.executeQuery();
+			List<Book> list=new ArrayList<Book>();
+			while(rs.next()){
+				Book book=new Book();
+				book.setBookid(rs.getInt("bookid"));
+				book.setBookname(rs.getString("bookname"));
+				book.setPrice(rs.getDouble("price"));
+				book.setAuthor(rs.getString("author"));
+				book.setPic(rs.getString("pic"));
+				book.setPublish(rs.getString("publish"));
+				
+				list.add(book);
+			}
+			return list;
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally{
+			//关闭资源，避免出现异常
+			BaseDao.close(con, ps, rs);
+		}
+		
+		return null;
+	}
+
 	
 }

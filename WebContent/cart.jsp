@@ -60,6 +60,7 @@ tr,td{text-align:center;background-color:#eee;}
 <div style="text-align:right;font-size:36px;margin-top:20px;">
 	<a href="book.jsp">继续购买图书</a>
 	<a href="login.jsp">登陆页面</a>
+	<a href="javascript: window.history.go(-1)">返回上一级</a>
 </div>
 </body>
 </html>

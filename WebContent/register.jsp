@@ -56,9 +56,9 @@ body{background:url(images/2.png)}
 </head>
 <body>
 <form action="doregister.jsp" method="post" id="form1">
-	<h1>用户注册页面</h1>
-	<h4>装饰中......</h4>	
-	<hr/>
+	<h1>~~~注册~~~</h1>
+	<!-- <h4>装饰中......</h4>	 -->
+	<!-- <hr/> -->
 	<table align="center">
 		<tr>
 			<td>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</td>
@@ -102,7 +102,8 @@ body{background:url(images/2.png)}
 			<td>
 				<input type="submit" value="注册"/>
 				<input type="reset" value="重置"/>
-				<a href="login.jsp" target="_blank">登陆</a>
+				<!-- <a href="login.jsp" target="_blank">登陆</a> -->
+				<a href="login.jsp">登陆</a>
 			</td>
 		</tr>
 	</table>

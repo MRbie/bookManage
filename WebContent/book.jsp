@@ -33,6 +33,11 @@ h1{text-align:center; }
 	BookDao dao=new BookDaoImpl();
 	//2:获取从下面上一页下一页传来的参数p
 	String p2=request.getParameter("p");
+	String bookname=request.getParameter("bookname");
+	if(bookname != null && !"".equals(bookname)){
+		book.setBookname(bookname);
+		request.setAttribute("bookname", bookname);
+	}
 	
 	//1:设置好第一页开始和一页有五条记录
 	int p=1;
@@ -55,13 +60,21 @@ h1{text-align:center; }
 	}
 	
 	//7:调用分页的方法进行分页操作
-	List<Book> list=dao.bookPage(p, r);
+	List<Book> list=dao.bookPage(p, r,book);
 	request.setAttribute("list",list);
 %>
 <h1>图书列表</h1>
+
+<form action="book.jsp" method="post">
+
 <!-- <a href="javascript: window.history.go(-1)">返回上一级</a> -->
 <table align="center" cellpadding="10" cellspacing="10">
-	
+	<tr>	
+		<th>
+			图书查询:<input type="text" name="bookname" id="bookname" value="${bookname}"/>
+		</th>
+		<th><input type="submit" value="查询"></th>
+	</tr>
 	<tr bgcolor="green">
 		<td>编号</td>
 		<td>书名</td>
@@ -98,5 +111,7 @@ h1{text-align:center; }
 	<input type="text" size="2" id="t2">
 	<input type="button" value="go" onclick="clickIt()"/>
 </div>
+
+</form>
 </body>
 </html>

@@ -60,8 +60,8 @@ a:hover{text-decoration:underline;font-size:18px;}
 			response.sendRedirect("book.jsp");
 		}
 	}else{
-		//response.sendRedirect("login.jsp");
-		out.println("登录失败");
+		response.sendRedirect("login.jsp");
+		//out.println("登录失败");
 	}
 %>
 

@@ -34,6 +34,15 @@ public interface BookDao {
 	 */
 	public List<Book> bookPage(int page,int record);
 	
+	/**
+	 * 条件查询
+	 * @param page
+	 * @param record
+	 * @param books
+	 * @return
+	 */
+	public List<Book> bookPage(int page,int record,Book books);
+	
 	/***
 	 * 获取总页数
 	 * @param record

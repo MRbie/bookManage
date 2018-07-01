@@ -14,15 +14,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>找回密码</title>
 <style type="text/css">
+h1{text-align:center;}
 body{background:url(images/3.jpg)}
 </style>
 </head>
 <body>
-<h1>找回密码</h1>
-<hr/>
-<a href="javascript: window.history.go(-1)">返回上一级</a>
+<h1>~~~密码寻回~~~</h1>
+<!-- <hr/> -->
+<!-- <a href="javascript: window.history.go(-1)">返回上一级</a> -->
 <form action="dosearchPassword.jsp" method="post">
-	<table>
+	<table align="center">
 		<tr>
 			<td>请输入账号：</td>
 			<td><input type="text" name="name"/></td>
@@ -32,6 +33,8 @@ body{background:url(images/3.jpg)}
 			<td>
 				<input type="submit" value="提交">
 				<input type="reset" value="重置">
+				<!-- <a href="login.jsp" target="_blank">登陆</a> -->
+				<a href="login.jsp">登陆</a>
 			</td>
 		</tr>
 	</table>

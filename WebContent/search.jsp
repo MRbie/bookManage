@@ -13,15 +13,29 @@
 <base href="<%=basePath %>" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>弹出信息</title>
-
+<style type="text/css">
+h1{text-align:center;}
+a{text-align:center;}
+</style>
 
 <script type="text/javascript">
-	alert("您的密码是：${user.password}");
+	/* alert("您的密码是：${user.password}"); */
 </script>
 
 </head>
-<body style="background-color:pink;">
+<body style="background:url(images/2.png)">
 <h1>您的密码是：${user.password}</h1>
-<a href="javascript: window.history.go(-1)">返回上一级</a>
+
+<table align="center">
+	<tr>
+		<th>
+			<a href="register.jsp">注册</a>
+		</th>
+		<th>
+			<a href="login.jsp">登陆</a>
+		</th>
+	</tr>
+</table>
+<!-- <a href="javascript: window.history.go(-1)">返回上一级</a> -->
 </body>
 </html>
