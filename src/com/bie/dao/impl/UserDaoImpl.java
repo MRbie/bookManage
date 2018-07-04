@@ -206,5 +206,19 @@ public class UserDaoImpl implements UserDao{
 		return n;
 	}
 
+	@Override
+	public boolean deleteUser(Integer id) {
+		// TODO Auto-generated method stub
+		String sql="delete from user where id=? ";
+		List<Object> list=new ArrayList<Object>();
+		list.add(id);
+		boolean mark=BaseDao.addUpdateDelete(sql, list.toArray());
+		if(mark){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
 	
 }

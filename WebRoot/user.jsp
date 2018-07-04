@@ -96,11 +96,9 @@ h1{text-align:center; }
 				<c:if test="${user.isAdmin==0 }">学生</c:if>
 				<c:if test="${user.isAdmin==1 }">管理员</c:if>
 			</td>
-			<%-- <td>
-				<a href="doupdatebook.jsp?bookid=${b.bookid}">修改</a>
-				<a href="">删除</a>
-				
-			</td> --%>
+			<td>
+				<a href="UserDeleteServlet?userId=${user.id}">删除</a>
+			</td>
 	</tr>
 	</c:forEach>
 </table>

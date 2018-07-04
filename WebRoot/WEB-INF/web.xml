@@ -43,5 +43,15 @@
   	<url-pattern>/BookInsertServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>UserDeleteServlet</servlet-name>
+  	<servlet-class>com.bie.servlet.UserDeleteServlet</servlet-class>
+  	<multipart-config></multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>UserDeleteServlet</servlet-name>
+  	<url-pattern>/UserDeleteServlet</url-pattern>
+  </servlet-mapping>
+  
   
 </web-app>

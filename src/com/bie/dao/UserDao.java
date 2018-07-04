@@ -37,4 +37,6 @@ public interface UserDao {
 	public List<User> userPage(int page,int record);
 	
 	public int getCount(int record);
+	
+	public boolean deleteUser(Integer id);
 }
