@@ -45,6 +45,16 @@ body{background:url(images/2.png)}
 	});
 </script>
 
+<script type="text/javascript">
+	//Js方法实现此功能,看不清,点击更换图片的方法
+	function changeImg(){
+	    var img = document.getElementById("img"); 
+	    img.src = "VerifyCodeUtilsServelt?date=" + new Date();;
+	} 
+
+</script>
+
+
 </head>
 <body>
 <form action="info.jsp" method="post"  id="form1">
@@ -65,6 +75,19 @@ body{background:url(images/2.png)}
 				<div id="passwordError" style="display:inline;color:red;"></div>
 			</td>
 			<!-- <td><a href="searchPassword.jsp">找回密码</a></td> -->
+		</tr>
+		<tr>
+			<td>验证码</td>
+			<td><input type="text" id="verifyCode" name="verifyCode"/></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>
+				<a href='#' onclick="javascript:changeImg()" style="color:white;">
+ 					<span style="color:black;">看不清？</span>
+ 				</a>
+ 				<img id="img" src="VerifyCodeUtilsServelt" />
+ 			</td>
 		</tr>
 		<!-- <tr>
 			<td>权限：</td>

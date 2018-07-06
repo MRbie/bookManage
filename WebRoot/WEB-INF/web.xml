@@ -53,5 +53,19 @@
   	<url-pattern>/UserDeleteServlet</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+  	<servlet-name>VerifyCodeUtilsServelt</servlet-name>
+  	<servlet-class>com.bie.servlet.VerifyCodeUtilsServelt</servlet-class>
+  	<multipart-config></multipart-config>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>VerifyCodeUtilsServelt</servlet-name>
+  	<url-pattern>/VerifyCodeUtilsServelt</url-pattern>
+  </servlet-mapping>
+  
+  
+  
+  
+  
   
 </web-app>

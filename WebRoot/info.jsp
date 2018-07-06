@@ -36,8 +36,9 @@ a:hover{text-decoration:underline;font-size:18px;}
 	UserDao dao=new UserDaoImpl();
 	String name=request.getParameter("name");
 	String password=request.getParameter("password");
-	System.out.println(" 账号:" + name + ", 密码:" + password);
-	
+	String writeVerifyCode=request.getParameter("verifyCode");
+	System.out.println(" 账号:" + name + ", 密码:" + password + ",randVerifyCode:" + writeVerifyCode);
+	Object randVerifyCode = session.getAttribute("randVerifyCode");
 	String isAdmin=request.getParameter("isAdmin");
 	
 	
@@ -47,22 +48,28 @@ a:hover{text-decoration:underline;font-size:18px;}
 	
 	User us=dao.login(user);
 	
-	
-	
-	session.setAttribute("user",user);
-	if(us != null){
-		//如果是管理员跳转到管理员页面
-		if(user.getIsAdmin().equals("1")){
-			//out.println(us.getIsAdmin());
-			response.sendRedirect("admin.jsp");
-		}else if(user.getIsAdmin().equals("0")){
-			//如果是普通会员，跳转到图书列表的页面
-			response.sendRedirect("book.jsp");
-		}
-	}else{
+	if(!(writeVerifyCode != null && !"".equals(writeVerifyCode) && 
+			randVerifyCode != null && !"".equals(randVerifyCode) &&
+			writeVerifyCode.equals(randVerifyCode.toString()))){
+		//如果服务器重启,不产生验证码,那么刷新直接跳转到登录页面
 		response.sendRedirect("login.jsp");
-		//out.println("登录失败");
+	}else{
+		session.setAttribute("user",user);
+		if(us != null){
+			//如果是管理员跳转到管理员页面
+			if(user.getIsAdmin().equals("1")){
+				//out.println(us.getIsAdmin());
+				response.sendRedirect("admin.jsp");
+			}else if(user.getIsAdmin().equals("0")){
+				//如果是普通会员，跳转到图书列表的页面
+				response.sendRedirect("book.jsp");
+			}
+		}else{
+			response.sendRedirect("login.jsp");
+			//out.println("登录失败");
+		}
 	}
+	
 %>
 
 
